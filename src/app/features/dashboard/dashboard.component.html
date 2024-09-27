@@ -1,0 +1,4 @@
+<p-inputSwitch
+  [ngModel]="(themeService.activeTheme$ | async) === 'dark'"
+  (ngModelChange)="themeService.toggleTheme()" />
+<p-button label="{{ themeService.activeTheme$ | async | titlecase }}"></p-button>
