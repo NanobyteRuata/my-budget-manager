@@ -1,0 +1,26 @@
+{
+  "COMMON": {
+    "APP_NAME": "ဘတ်ဂျက် မန်နေဂျာ",
+    "TOOLTIP_LIGHT": "လင်းမယ်လေ",
+    "TOOLTIP_DARK": "မှောင်မယ်လေ",
+    "SUCCESS": "ရတယ်ဟေ့!",
+    "YES": "အင်း",
+    "NO": "ဟင့်အင်း"
+  },
+  "FEATURES": {
+    "SIGN_OUT": "ထွက်မယ်",
+    "SIGN_OUT_CONFIRM_MESSAGE": "တကယ် ထွက်သွားတော့မှာလား?"
+  },
+  "LOGIN": {
+    "GREETING": "မှ ကြိုဆိုပါတယ်",
+    "CODE_LINK": "Angular ကုတ်ကြည့်ရန်",
+    "SIGN_IN": "Google နဲ့ ဝင်မယ်",
+    "SIGN_IN_SUCCESS": "ဘတ်ဂျက် မန်နေဂျာ မှ ကြိုဆိုပါတယ်, {{name}}"
+  },
+  "DASHBOARD": {
+    "TITLE": "အနှစ်ချုပ်"
+  },
+  "ACCOUNTS": {
+    "TITLE": "အကောင့်များ"
+  }
+}

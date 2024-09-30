@@ -1,13 +1,26 @@
 import { NgModule } from '@angular/core';
+import {
+  canActivate,
+  redirectLoggedInTo,
+  redirectUnauthorizedTo,
+} from '@angular/fire/auth-guard';
 import { RouterModule, Routes } from '@angular/router';
+
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
+const redirectLoggedInToDashboard = () => redirectLoggedInTo(['/']);
 
 const routes: Routes = [
   {
     path: '',
     loadChildren: () =>
-      import('./features/dashboard/dashboard.module').then(
-        m => m.DashboardModule
-      ),
+      import('./features/features.module').then((m) => m.FeaturesModule),
+    ...canActivate(redirectUnauthorizedToLogin),
+  },
+  {
+    path: 'login',
+    loadChildren: () =>
+      import('./login/login.module').then((m) => m.LoginModule),
+    ...canActivate(redirectLoggedInToDashboard),
   },
 ];
 

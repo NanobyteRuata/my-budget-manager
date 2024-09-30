@@ -1,0 +1,62 @@
+<div class="features-container">
+  <!-- Toolbar -->
+  <p-toolbar>
+    <!-- Toolbar Left -->
+    <div class="p-toolbar-group-start">
+      <!-- For Web View -->
+      <h2 class="web">{{ 'COMMON.APP_NAME' | translate }}</h2>
+
+      <!-- For Mobile View -->
+      <p-button
+        class="mobile"
+        icon="pi pi-bars"
+        severity="secondary"
+        (onClick)="nav.toggleSidebar()" />
+      <h2 class="mobile">{{ nav.selectedNavItem?.label ?? '' | translate }}</h2>
+    </div>
+
+    <!-- Toolbar Right -->
+    <div class="p-toolbar-group-end">
+      <app-language-changer></app-language-changer>
+      <app-btn-theme-toggle></app-btn-theme-toggle>
+      <div
+        class="profile-actions-toggle"
+        (click)="profileActionsMenu.toggle($event)">
+        <p-avatar
+          [image]="currentUserPhotoURL ?? undefined"
+          [label]="
+            currentUserPhotoURL
+              ? undefined
+              : currentUser?.displayName?.charAt(0)
+          "
+          size="normal"
+          shape="circle" />
+        <h4 class="web">
+          {{ currentUser?.displayName ?? currentUser?.email }}
+        </h4>
+      </div>
+
+      <!-- Hidden profile actions menu -->
+      <p-menu #profileActionsMenu [model]="profileActions" [popup]="true">
+        <ng-template pTemplate="start">
+          <div class="profile-name-wrapper mobile">
+            <h4>{{ currentUser?.displayName ?? currentUser?.email }}</h4>
+          </div>
+        </ng-template>
+        <ng-template pTemplate="item" let-item>
+          <a class="p-menuitem-link">
+            <span [class]="item.icon"></span>
+            <span>{{ item.label | translate }}</span>
+          </a>
+        </ng-template>
+      </p-menu>
+    </div>
+  </p-toolbar>
+
+  <div class="content-wrapper">
+    <app-nav #nav></app-nav>
+    <div class="feature-wrapper">
+      <ng-component></ng-component>
+    </div>
+  </div>
+</div>

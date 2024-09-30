@@ -16,19 +16,19 @@ export class ThemeService {
     this.setTheme(theme);
   }
 
-  validateTheme(savedTheme: string | null): ThemeTypes {
-    if (savedTheme && Object.values(Themes).find(t => t === savedTheme)) {
+  validateTheme = (savedTheme: string | null): ThemeTypes => {
+    if (savedTheme && Object.values(Themes).find((t) => t === savedTheme)) {
       return savedTheme as ThemeTypes;
     }
 
     return this.DEFAULT_THEME;
-  }
+  };
 
-  getTheme(): ThemeTypes {
+  getTheme = (): ThemeTypes => {
     return this._activeTheme.getValue();
-  }
+  };
 
-  setTheme(theme: ThemeTypes): void {
+  setTheme = (theme: ThemeTypes): void => {
     const themeLink = this.document.getElementById(
       'app-theme'
     ) as HTMLLinkElement;
@@ -39,11 +39,11 @@ export class ThemeService {
       localStorage.setItem('theme', theme);
       this._activeTheme.next(theme);
     }
-  }
+  };
 
-  toggleTheme(): void {
+  toggleTheme = (): void => {
     const themes = Object.values(Themes);
-    const otherTheme = themes.find(theme => theme !== this.getTheme());
+    const otherTheme = themes.find((theme) => theme !== this.getTheme());
     this.setTheme(otherTheme ?? this.DEFAULT_THEME);
-  }
+  };
 }

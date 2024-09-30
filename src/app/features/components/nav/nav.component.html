@@ -1,0 +1,12 @@
+<!-- Web View -->
+<div class="nav-web">
+  <p-menu id="nav-menu" [model]="navItems"></p-menu>
+</div>
+
+<!-- Mobile View -->
+<p-sidebar class="nav-mobile" [(visible)]="isSidebarOpen" position="left">
+  <ng-template pTemplate="header">
+    <h4 class="sidebar-nav-title">{{ 'COMMON.APP_NAME' | translate }}</h4>
+  </ng-template>
+  <p-menu id="nav-menu" [model]="navItems"></p-menu>
+</p-sidebar>

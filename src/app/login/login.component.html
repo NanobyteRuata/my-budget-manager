@@ -1,0 +1,20 @@
+<div class="login-wrapper">
+  <h3 *ngIf="translateService.store.currentLang === 'en'">
+    {{ 'LOGIN.GREETING' | translate }}
+  </h3>
+  <h1>{{ 'COMMON.APP_NAME' | translate }}</h1>
+  <h3 *ngIf="translateService.store.currentLang === 'mm'">
+    {{ 'LOGIN.GREETING' | translate }}
+  </h3>
+  <a href="#" target="_blank">{{ 'LOGIN.CODE_LINK' | translate }}</a>
+  <br />
+  <p-button
+    icon="pi pi-google"
+    [label]="'LOGIN.SIGN_IN' | translate"
+    severity="danger"
+    (onClick)="login()" />
+  <div class="buttons-wrapper">
+    <app-language-changer></app-language-changer>
+    <app-btn-theme-toggle></app-btn-theme-toggle>
+  </div>
+</div>

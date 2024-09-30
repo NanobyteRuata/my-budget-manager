@@ -1,0 +1,48 @@
+@use '../../../../variables.scss';
+
+.features-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 16px;
+  gap: 16px;
+
+  .p-toolbar-group-start,
+  .p-toolbar-group-center,
+  .p-toolbar-group-end,
+  .p-menuitem-link {
+    gap: 8px;
+  }
+
+  .p-toolbar-group-start {
+    .web,
+    .mobile {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+  }
+
+  .content-wrapper {
+    flex: 1;
+    display: flex;
+    gap: 16px;
+  }
+}
+
+.profile-actions-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+
+  p-avatar {
+    height: 24px; // Default p-avatar is not square, so i had to make it
+  }
+}
+
+.profile-name-wrapper {
+  padding: 8px;
+}

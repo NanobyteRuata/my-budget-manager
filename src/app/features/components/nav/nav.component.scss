@@ -1,0 +1,49 @@
+@use '../../../../variables.scss';
+
+// Active link is not highlighted on page load
+// if .p-menuitem-link-active is not styled
+// so I have to do it myself
+::ng-deep {
+  // Default Nav Item
+  .p-menuitem-content {
+    color: var(--surface-400);
+
+    .p-menuitem-icon,
+    .p-menuitem-text {
+      color: var(--surface-400);
+    }
+  }
+
+  // Selected Nav Item
+  .p-menuitem-content:has(.p-menuitem-link-active) {
+    background: var(--surface-100);
+    color: var(--surface-900);
+
+    .p-menuitem-icon,
+    .p-menuitem-text {
+      color: var(--surface-900);
+    }
+  }
+}
+
+.sidebar-nav-title {
+  padding: 12px;
+}
+
+.nav-mobile {
+  display: none;
+}
+
+@media only screen and (max-width: variables.$tabletBreakpoint) {
+  .nav-web {
+    display: none;
+  }
+
+  .nav-mobile {
+    display: block;
+
+    ::ng-deep .p-menu {
+      width: 100%;
+    }
+  }
+}

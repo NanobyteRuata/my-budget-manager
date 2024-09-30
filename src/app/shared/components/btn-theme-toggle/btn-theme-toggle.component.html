@@ -1,0 +1,18 @@
+<p-button
+  class="btn-theme-switch"
+  [outlined]="true"
+  [rounded]="true"
+  [icon]="
+    (themeService.activeTheme$ | async) === 'dark' ? 'pi pi-sun' : 'pi pi-moon'
+  "
+  [severity]="
+    (themeService.activeTheme$ | async) === 'dark' ? 'warning' : 'contrast'
+  "
+  [pTooltip]="
+    ((themeService.activeTheme$ | async) === 'dark'
+      ? 'COMMON.TOOLTIP_LIGHT'
+      : 'COMMON.TOOLTIP_DARK'
+    ) | translate
+  "
+  tooltipPosition="bottom"
+  (onClick)="themeService.toggleTheme()" />

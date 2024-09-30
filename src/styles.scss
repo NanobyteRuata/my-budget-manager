@@ -4,3 +4,33 @@
 html {
   font-size: 12px;
 }
+
+html,
+body,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Responsive classes */
+
+// Web View
+@media only screen and (min-width: 800px) {
+  .mobile {
+    display: none !important;
+  }
+}
+
+// Mobile View
+@media only screen and (max-width: 800px) {
+  .web {
+    display: none !important;
+  }
+}
