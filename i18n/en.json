@@ -1,0 +1,26 @@
+{
+  "COMMON": {
+    "APP_NAME": "My Budget Manager",
+    "TOOLTIP_LIGHT": "Switch to light",
+    "TOOLTIP_DARK": "Switch to dark",
+    "SUCCESS": "Success!",
+    "YES": "Yes",
+    "NO": "No"
+  },
+  "FEATURES": {
+    "SIGN_OUT": "Sign Out",
+    "SIGN_OUT_CONFIRM_MESSAGE": "Are you sure you want to sign out?"
+  },
+  "LOGIN": {
+    "GREETING": "Welcome to",
+    "CODE_LINK": "Angular source code link",
+    "SIGN_IN": "Sign in with Google",
+    "SIGN_IN_SUCCESS": "Welcome to My Budget Manager, {{name}}"
+  },
+  "DASHBOARD": {
+    "TITLE": "Dashboard"
+  },
+  "ACCOUNTS": {
+    "TITLE": "Accounts"
+  }
+}
