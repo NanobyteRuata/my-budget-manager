@@ -14,17 +14,7 @@ import {
 
 @NgModule({
   providers: [
-    provideFirebaseApp(() =>
-      initializeApp({
-        projectId: environment.projectId,
-        appId: environment.appId,
-        storageBucket: environment.storageBucket,
-        apiKey: environment.apiKey,
-        authDomain: environment.authDomain,
-        messagingSenderId: environment.messagingSenderId,
-        measurementId: environment.measurementId,
-      })
-    ),
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
     provideMessaging(() => getMessaging()),

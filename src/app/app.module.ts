@@ -10,18 +10,22 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { ToastModule } from 'primeng/toast';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
-import { HttpClient } from '@angular/common/http';
+import { HttpBackend, HttpClient } from '@angular/common/http';
 
-export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http, '/i18n/', '.json');
+export function HttpLoaderFactory(httpBackend: HttpBackend) {
+  return new TranslateHttpLoader(
+    new HttpClient(httpBackend),
+    './i18n/',
+    '.json'
+  );
 }
 
-const translateModuleWithConfig = TranslateModule.forRoot({
+const TranslateModuleWithConfig = TranslateModule.forRoot({
   defaultLanguage: 'en',
   loader: {
     provide: TranslateLoader,
     useFactory: HttpLoaderFactory,
-    deps: [HttpClient],
+    deps: [HttpBackend],
   },
 });
 
@@ -32,7 +36,7 @@ const appLevelPrimeNgModules = [ToastModule, ConfirmDialogModule];
   imports: [
     BrowserAnimationsModule,
     AppRoutingModule,
-    translateModuleWithConfig,
+    TranslateModuleWithConfig,
     CoreModule,
     ...appLevelPrimeNgModules,
   ],

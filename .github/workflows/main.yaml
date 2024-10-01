@@ -1,0 +1,37 @@
+name: Angular Build and Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 22
+
+      - name: Create environment.ts file
+        run: node gh-actions-generate-prod-envs-file.js
+        env:
+          ENVIRONMENT_PRODUCTION: ${{ secrets.ENVIRONMENT_PRODUCTION }}
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build Angular App
+        run: npm run build:prod
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: docs/browser
+          base_branch: main
+          branch: production-build
+          token: ${{ secrets.GH_TOKEN }}
