@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "my-budget-manager-web": {
+    "my-budget-manager": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -92,10 +92,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "my-budget-manager-web:build:production"
+              "buildTarget": "my-budget-manager:build:production"
             },
             "development": {
-              "buildTarget": "my-budget-manager-web:build:development"
+              "buildTarget": "my-budget-manager:build:development"
             }
           },
           "defaultConfiguration": "development"

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Language } from '../../models/language.model';
-import { LANGUAGES } from '../../../constants/languages.constant';
+import { LANGUAGES } from '../../../core/constants/languages.constant';
 
 @Component({
   selector: 'app-language-changer',
