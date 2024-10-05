@@ -22,5 +22,20 @@
   },
   "ACCOUNTS": {
     "TITLE": "Accounts"
+  },
+  "SETTINGS": {
+    "TITLE": "Settings",
+    "DEFAULT_CURRENCY_LABEL": "Default Currency",
+    "DEFAULT_CURRENCY_PLACEHOLDER": "Please select a currency",
+    "DEFAULT_CURRENCY_ERROR": "You must select a currency.",
+    "DEFAULT_THEME_LABEL": "Default Theme",
+    "DEFAULT_THEME_PLACEHOLDER": "Please select a theme",
+    "DEFAULT_THEME_ERROR": "You must select a theme.",
+    "DEFAULT_LANGUAGE_LABEL": "Default Language",
+    "DEFAULT_LANGUAGE_PLACEHOLDER": "Please select a language",
+    "DEFAULT_LANGUAGE_ERROR": "You must select a language.",
+    "DEFAULT_FONT_SIZE_LABEL": "Default Font Size",
+    "DEFAULT_FONT_SIZE_PLACEHOLDER": "Please select a font size",
+    "DEFAULT_FONT_SIZE_ERROR": "You must select a font size."
   }
 }

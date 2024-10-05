@@ -64,7 +64,7 @@ export class LayoutComponent {
           acceptLabel: translatedValues['COMMON.YES'],
           rejectLabel: translatedValues['COMMON.NO'],
           accept: () => {
-            this.auth.signOut().then(this.redirectToLogin);
+            this.auth.signOut().then(() => this.redirectToLogin());
           },
         });
       },

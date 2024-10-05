@@ -13,4 +13,10 @@ export const NAV_ITEMS: MenuItem[] = [
     routerLink: '/accounts',
     routerLinkActiveOptions: { exact: false },
   },
+  {
+    label: 'SETTINGS.TITLE',
+    icon: 'pi pi-cog',
+    routerLink: '/settings',
+    routerLinkActiveOptions: { exact: false },
+  },
 ];

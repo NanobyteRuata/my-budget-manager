@@ -1,0 +1,71 @@
+<div class="settings-container">
+  <div *ngIf="settings" class="settings-grid">
+    <!-- Currency -->
+    <app-label-wrapper
+      [label]="'SETTINGS.DEFAULT_CURRENCY_LABEL' | translate"
+      [required]="true"
+      [error]="errors['currency'] | translate">
+      <p-autoComplete
+        [style]="{ width: '100%' }"
+        [inputStyle]="{ width: '100%' }"
+        [(ngModel)]="settings.currency"
+        [forceSelection]="true"
+        [dropdown]="true"
+        [suggestions]="currencySuggestions"
+        (completeMethod)="searchCurrency($event)"
+        optionLabel="short"
+        [placeholder]="'SETTINGS.DEFAULT_CURRENCY_PLACEHOLDER' | translate">
+        <ng-template let-currency pTemplate="item">
+          <div class="currency-item">
+            <span>{{ currency.country }}</span>
+            <strong>{{ currency.short }}</strong>
+          </div>
+        </ng-template>
+      </p-autoComplete>
+    </app-label-wrapper>
+
+    <!-- Theme -->
+    <app-label-wrapper
+      [label]="'SETTINGS.DEFAULT_THEME_LABEL' | translate"
+      [error]="errors['theme'] | translate">
+      <p-dropdown
+        [style]="{ width: '100%' }"
+        [options]="themes"
+        [(ngModel)]="settings.theme"
+        [placeholder]="'SETTINGS.DEFAULT_THEME_PLACEHOLDER' | translate">
+        <ng-template pTemplate="selectedItem">
+          {{ settings.theme | titlecase }}
+        </ng-template>
+        <ng-template let-theme pTemplate="item">
+          {{ theme | titlecase }}
+        </ng-template>
+      </p-dropdown>
+    </app-label-wrapper>
+
+    <!-- Language -->
+    <app-label-wrapper
+      [label]="'SETTINGS.DEFAULT_LANGUAGE_LABEL' | translate"
+      [error]="errors['language'] | translate">
+      <p-dropdown
+        [style]="{ width: '100%' }"
+        [options]="languages"
+        [(ngModel)]="settings.language"
+        optionLabel="name"
+        [placeholder]="'SETTINGS.DEFAULT_LANGUAGE_PLACEHOLDER' | translate" />
+    </app-label-wrapper>
+
+    <!-- Language -->
+    <app-label-wrapper
+      [label]="'SETTINGS.DEFAULT_FONT_SIZE_LABEL' | translate"
+      [error]="errors['fontSize'] | translate">
+      <p-dropdown
+        [style]="{ width: '100%' }"
+        [options]="fontSizes"
+        [(ngModel)]="settings.fontSize"
+        [placeholder]="'SETTINGS.DEFAULT_FONT_SIZE_PLACEHOLDER' | translate" />
+    </app-label-wrapper>
+  </div>
+  <div class="actions-wrapper">
+    <p-button (onClick)="save()">Save</p-button>
+  </div>
+</div>

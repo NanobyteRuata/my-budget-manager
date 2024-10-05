@@ -22,5 +22,20 @@
   },
   "ACCOUNTS": {
     "TITLE": "အကောင့်များ"
+  },
+  "SETTINGS": {
+    "TITLE": "ဆက်တင်များ",
+    "DEFAULT_CURRENCY_LABEL": "ပုံသေ ငွေကြေး",
+    "DEFAULT_CURRENCY_PLACEHOLDER": "ငွေကြေး ရွေးချယ်ရန်",
+    "DEFAULT_CURRENCY_ERROR": "ငွေကြေး တစ်ခု ရွေးချယ်ပါ",
+    "DEFAULT_THEME_LABEL": "ပုံသေ အပြင်အဆင်",
+    "DEFAULT_THEME_PLACEHOLDER": "အပြင်အဆင် ရွေးချယ်ရန်",
+    "DEFAULT_THEME_ERROR": "အပြင်အဆင် တစ်ခု ရွေးချယ်ပါ",
+    "DEFAULT_LANGUAGE_LABEL": "ပုံသေ ဘာသာစကား",
+    "DEFAULT_LANGUAGE_PLACEHOLDER": "ဘာသာစကား ရွေးချယ်ရန်",
+    "DEFAULT_LANGUAGE_ERROR": "ဘာသာစကား တစ်ခု ရွေးချယ်ပါ",
+    "DEFAULT_FONT_SIZE_LABEL": "ပုံသေ ဖောင့်ဆိုဒ်",
+    "DEFAULT_FONT_SIZE_PLACEHOLDER": "ဖောင့်ဆိုဒ် ရွေးချယ်ရန်",
+    "DEFAULT_FONT_SIZE_ERROR": "ဖောင့်ဆိုဒ် တစ်ခု ရွေးချယ်ပါ"
   }
 }

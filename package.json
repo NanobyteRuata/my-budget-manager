@@ -1,5 +1,5 @@
 {
-  "name": "my-budget-manager-web",
+  "name": "my-budget-manager",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",

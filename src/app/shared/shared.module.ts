@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateModule } from '@ngx-translate/core';
 
 import { TooltipModule } from 'primeng/tooltip';
 import { ButtonModule } from 'primeng/button';
@@ -11,44 +11,37 @@ import { InputTextModule } from 'primeng/inputtext';
 import { MenuModule } from 'primeng/menu';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { DropdownModule } from 'primeng/dropdown';
+import { AutoCompleteModule } from 'primeng/autocomplete';
 
 import { BtnThemeToggleComponent } from './components/btn-theme-toggle/btn-theme-toggle.component';
 import { LanguageChangerComponent } from './components/language-changer/language-changer.component';
-import { HttpClient } from '@angular/common/http';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-
-export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http, './i18n/', '.json');
-}
-
-const translateModuleWithConfig = TranslateModule.forChild({
-  defaultLanguage: 'en',
-  loader: {
-    provide: TranslateLoader,
-    useFactory: HttpLoaderFactory,
-    deps: [HttpClient],
-  },
-});
+import { LabelWrapperComponent } from './components/label-wrapper/label-wrapper.component';
 
 const importExports = [
   CommonModule,
   FormsModule,
+  TranslateModule,
   TooltipModule,
   ButtonModule,
   InputTextModule,
   MenuModule,
   InputSwitchModule,
   DropdownModule,
-  TranslateModule,
+  AutoCompleteModule,
 ];
 
 @NgModule({
-  declarations: [BtnThemeToggleComponent, LanguageChangerComponent],
+  declarations: [
+    BtnThemeToggleComponent,
+    LanguageChangerComponent,
+    LabelWrapperComponent,
+  ],
   imports: [...importExports],
   exports: [
     ...importExports,
     BtnThemeToggleComponent,
     LanguageChangerComponent,
+    LabelWrapperComponent,
   ],
 })
 export class SharedModule {}

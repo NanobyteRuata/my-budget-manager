@@ -1,6 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { MenuItem } from 'primeng/api';
-import { NAV_ITEMS } from '../../../constants/nav.constant';
+import { NAV_ITEMS } from '../../../core/constants/nav.constant';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter, Subscription } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
@@ -12,7 +12,6 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class NavComponent implements OnDestroy {
   isSidebarOpen: boolean = false;
-
   navItems: MenuItem[] = [];
   selectedNavItem?: MenuItem;
 
@@ -28,9 +27,9 @@ export class NavComponent implements OnDestroy {
 
   initNav = (): void => {
     this.translateService.onLangChange.subscribe({
-      next: this.getNavItemsAndTranslate,
+      next: () => this.getNavItemsAndTranslate(),
     });
-    this.getNavItemsAndTranslate().then;
+    this.getNavItemsAndTranslate().then();
   };
 
   getNavItemsAndTranslate = async (): Promise<void> => {
@@ -40,7 +39,7 @@ export class NavComponent implements OnDestroy {
       navItems.push({
         ...navItem,
         label: await this.getTranslation(navItem.label),
-        command: () => this.toggleSidebar(),
+        command: () => this.toggleSidebar(false),
       });
     }
 
@@ -72,7 +71,7 @@ export class NavComponent implements OnDestroy {
     this.selectedNavItem = this.navItems.find((n) => n.routerLink === url);
   };
 
-  toggleSidebar = (open?: boolean) => {
+  toggleSidebar = (open?: boolean): void => {
     this.isSidebarOpen = open ?? !this.isSidebarOpen;
   };
 

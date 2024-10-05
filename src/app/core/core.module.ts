@@ -11,6 +11,8 @@ import {
   provideHttpClient,
   withInterceptorsFromDi,
 } from '@angular/common/http';
+import { NotificationService } from './services/notification.service';
+import { SettingsService } from './services/settings.service';
 
 @NgModule({
   providers: [
@@ -23,6 +25,8 @@ import {
     ThemeService,
     MessageService,
     ConfirmationService,
+    NotificationService,
+    SettingsService,
   ],
 })
 export class CoreModule {}
