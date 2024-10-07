@@ -13,6 +13,7 @@ import {
 } from '@angular/common/http';
 import { NotificationService } from './services/notification.service';
 import { SettingsService } from './services/settings.service';
+import { AccountsService } from './services/accounts.service';
 
 @NgModule({
   providers: [
@@ -27,6 +28,7 @@ import { SettingsService } from './services/settings.service';
     ConfirmationService,
     NotificationService,
     SettingsService,
+    AccountsService,
   ],
 })
 export class CoreModule {}

@@ -16,6 +16,12 @@ import { AutoCompleteModule } from 'primeng/autocomplete';
 import { BtnThemeToggleComponent } from './components/btn-theme-toggle/btn-theme-toggle.component';
 import { LanguageChangerComponent } from './components/language-changer/language-changer.component';
 import { LabelWrapperComponent } from './components/label-wrapper/label-wrapper.component';
+import { TableModule } from 'primeng/table';
+import { ColorPickerModule } from 'primeng/colorpicker';
+import { DialogModule } from 'primeng/dialog';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { DropdownCurrencyComponent } from './components/dropdown-currency/dropdown-currency.component';
+import { SelectButtonModule } from 'primeng/selectbutton';
 
 const importExports = [
   CommonModule,
@@ -24,24 +30,27 @@ const importExports = [
   TooltipModule,
   ButtonModule,
   InputTextModule,
-  MenuModule,
   InputSwitchModule,
+  InputNumberModule,
+  SelectButtonModule,
+  MenuModule,
   DropdownModule,
   AutoCompleteModule,
+  TableModule,
+  ColorPickerModule,
+  DialogModule,
+];
+
+const exportDeclarations = [
+  BtnThemeToggleComponent,
+  LanguageChangerComponent,
+  LabelWrapperComponent,
+  DropdownCurrencyComponent,
 ];
 
 @NgModule({
-  declarations: [
-    BtnThemeToggleComponent,
-    LanguageChangerComponent,
-    LabelWrapperComponent,
-  ],
+  declarations: [...exportDeclarations],
   imports: [...importExports],
-  exports: [
-    ...importExports,
-    BtnThemeToggleComponent,
-    LanguageChangerComponent,
-    LabelWrapperComponent,
-  ],
+  exports: [...importExports, ...exportDeclarations],
 })
 export class SharedModule {}

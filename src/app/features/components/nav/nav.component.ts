@@ -75,7 +75,7 @@ export class NavComponent implements OnDestroy {
     this.isSidebarOpen = open ?? !this.isSidebarOpen;
   };
 
-  ngOnDestroy = (): void => {
+  ngOnDestroy(): void {
     this.routerNavigationChangeSubscription.unsubscribe();
-  };
+  }
 }

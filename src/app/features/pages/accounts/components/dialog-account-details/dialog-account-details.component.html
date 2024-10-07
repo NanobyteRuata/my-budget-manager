@@ -1,0 +1,67 @@
+<p-dialog
+  class="new-account-dialog"
+  *ngIf="account"
+  [header]="(account.id ? 'Update' : 'Create') + ' an Account'"
+  [modal]="true"
+  [visible]="visible"
+  (visibleChange)="visibleChange.emit($event)">
+  <div class="new-account-dialog-wrapper">
+    <div class="two-column-wrapper">
+      <app-label-wrapper
+        label="Name"
+        [required]="true"
+        [error]="errors['name']">
+        <input pInputText [(ngModel)]="account.name" />
+      </app-label-wrapper>
+      <p-colorPicker class="big-color-picker" [(ngModel)]="account.color" />
+    </div>
+    <app-label-wrapper label="Type" [error]="errors['type']">
+      <p-dropdown
+        [style]="{ width: '100%' }"
+        [options]="accountTypes"
+        [(ngModel)]="account.type"
+        [placeholder]="'Select an account Type'">
+        <ng-template pTemplate="selectedItem">
+          <i [class]="account.type.icon"></i> {{ account.type.name }}
+        </ng-template>
+        <ng-template let-type pTemplate="item">
+          <i [class]="type.icon"></i> {{ type.name }}
+        </ng-template>
+      </p-dropdown>
+    </app-label-wrapper>
+    <app-label-wrapper
+      label="Balance"
+      [required]="true"
+      [error]="errors['balance']">
+      <p-inputNumber
+        [style]="{ width: '100%' }"
+        [(ngModel)]="account.balance"
+        mode="decimal"
+        [minFractionDigits]="2"
+        [maxFractionDigits]="2" />
+    </app-label-wrapper>
+    <app-label-wrapper
+      [label]="'Currency'"
+      [required]="true"
+      [error]="errors['currency']">
+      <app-dropdown-currency
+        [disabled]="account.id"
+        [(value)]="account.currency"
+        placeholder="Currency"></app-dropdown-currency>
+    </app-label-wrapper>
+    <app-label-wrapper label="Show in stats?" [error]="errors['showInStats']">
+      <p-selectButton
+        [options]="yesNoOptions"
+        [(ngModel)]="account.showInStats"
+        optionLabel="label"
+        optionValue="value" />
+    </app-label-wrapper>
+    <div class="actions-wrapper">
+      <p-button
+        label="Cancel"
+        severity="secondary"
+        (onClick)="visibleChange.emit(false)" />
+      <p-button label="Save" [loading]="isSaveLoading" (onClick)="onSave()" />
+    </div>
+  </div>
+</p-dialog>

@@ -1,0 +1,33 @@
+.new-account-dialog ::ng-deep .p-dialog-content {
+  overflow: visible; // for color picker
+
+  .new-account-dialog-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+
+    .two-column-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      .big-color-picker {
+        align-self: flex-start;
+        margin-top: calc(var(--font-size) + 0.75rem);
+
+        input {
+          width: 2rem;
+          height: 2rem;
+        }
+      }
+    }
+
+    .actions-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+  }
+}

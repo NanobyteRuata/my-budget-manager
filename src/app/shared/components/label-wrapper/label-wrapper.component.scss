@@ -1,14 +1,24 @@
-.label {
-  display: block;
-  margin: 4px;
-}
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 4px;
 
-.required {
-  color: var(--red-500);
-}
+  .label {
+    display: block;
+    margin: 0 4px;
+    height: calc(
+      var(--font-size) + 2px
+    ); //to preserve space when label is empty string
+  }
 
-.error {
-  display: block;
-  margin: 4px;
-  color: var(--red-500);
+  .required {
+    color: var(--red-500);
+  }
+
+  .error {
+    display: block;
+    margin: 0 4px;
+    color: var(--red-500);
+  }
 }

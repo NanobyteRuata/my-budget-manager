@@ -1,0 +1,19 @@
+<p-autoComplete
+  [style]="{ width: '100%' }"
+  [inputStyle]="{ width: '100%' }"
+  [ngModel]="value"
+  (ngModelChange)="valueChange.emit($event)"
+  [forceSelection]="true"
+  [dropdown]="true"
+  [suggestions]="suggestions"
+  [disabled]="disabled"
+  (completeMethod)="search($event)"
+  optionLabel="short"
+  [placeholder]="placeholder | translate">
+  <ng-template let-currency pTemplate="item">
+    <div class="currency-item">
+      <span>{{ currency.country }}</span>
+      <strong>{{ currency.short }}</strong>
+    </div>
+  </ng-template>
+</p-autoComplete>
