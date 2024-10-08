@@ -21,8 +21,12 @@ export class SettingsService {
     private notificationService: NotificationService,
     @Inject(DOCUMENT) private document: Document
   ) {
-    this.auth.authStateReady().then(() => this.loadSettings());
+    this.auth.onAuthStateChanged((user) => user && this.loadSettings());
   }
+
+  settings = (): Settings | undefined => {
+    return this._settings.value;
+  };
 
   private loadSettings = async (): Promise<void> => {
     if (!this.auth.currentUser) return;

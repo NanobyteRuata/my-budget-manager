@@ -21,7 +21,29 @@
     "TITLE": "အနှစ်ချုပ်"
   },
   "ACCOUNTS": {
-    "TITLE": "အကောင့်များ"
+    "TITLE": "အကောင့်များ",
+    "PROPERTY_NAME": "အမည်",
+    "PROPERTY_TYPE": "အမျိုးအစား",
+    "PROPERTY_BALANCE": "လက်ကျန်ငွေ",
+    "PROPERTY_CURRENCY": "ငွေကြေး",
+    "PROPERTY_SHOW_IN_STATS": "စာရင်းတွင် ထည့်/မထည့်",
+    "PROPERTY_ACTIONS": "လုပ်ဆောင်မှုများ",
+    "CREATE_HEADER": "အကောင့်သစ်",
+    "UPDATE_HEADER": "အကောင့်",
+    "SHOW_IN_STATS_YES": "ထည့်မယ်",
+    "SHOW_IN_STATS_NO": "မထည့်ဘူး",
+    "CANCEL": "တော်ပြီ",
+    "SAVE": "သိမ်းမယ်",
+    "SUCCESSFUL_TITLE": "အောင်မြင်တယ်",
+    "FAILED_TITLE": "မအောင်မြင်ပါ",
+    "CREATE_SUCCESSFUL_MESSAGE": "အကောင့်သစ် လုပ်တာ အောင်မြင်ပါတယ်",
+    "CREATE_FAILED_MESSAGE": "အကောင့်သစ် လုပ်တာ မအောင်မြင်ပါဘူး",
+    "UPDATE_SUCCESSFUL_MESSAGE": "အကောင့် ပြင်ဆင်တာ အောင်မြင်ပါတယ်",
+    "UPDATE_FAILED_MESSAGE": "အကောင့် ပြင်ဆင်တာ မအောင်မြင်ပါဘူး",
+    "DELETE_CONFIRM_TITLE": "ဖျက်မယ်",
+    "DELETE_CONFIRM_MESSAGE": "အကောင့် ဖျက်မှာ သေချာလား?",
+    "DELETE_SUCCESSFUL_MESSAGE": "အကောင့်ဖျက်တာ အောင်မြင်ပါတယ်",
+    "DELETE_FAILED_MESSAGE": "အကောင့်ဖျက်တာ မအောင်မြင်ပါဘူး"
   },
   "SETTINGS": {
     "TITLE": "ဆက်တင်များ",

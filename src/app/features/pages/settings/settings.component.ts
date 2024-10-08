@@ -6,13 +6,13 @@ import {
 } from '../../../core/models/settings.model';
 import { CURRENCIES } from '../../../core/constants/settings.constant';
 import { AutoCompleteCompleteEvent } from 'primeng/autocomplete';
-import { NotificationService } from '../../../core/services/notification.service';
 import { SettingsService } from '../../../core/services/settings.service';
 import { Subscription } from 'rxjs';
 import { Themes, ThemeTypes } from '../../../core/models/settings.model';
 import { LANGUAGES } from '../../../core/constants/languages.constant';
 import { Language } from '../../../shared/models/language.model';
 import { Currency } from '../../../core/models/common.model';
+import { ValidationErrors } from '@angular/forms';
 
 @Component({
   selector: 'app-settings',
@@ -21,7 +21,7 @@ import { Currency } from '../../../core/models/common.model';
 })
 export class SettingsComponent implements OnDestroy {
   currencies: Currency[] = CURRENCIES;
-  currencySuggestions: any[] = [];
+  currencySuggestions: Currency[] = [];
 
   themes: ThemeTypes[] = Object.values(Themes);
   languages: Language[] = LANGUAGES;
@@ -29,14 +29,11 @@ export class SettingsComponent implements OnDestroy {
 
   settings?: Settings;
 
-  errors: { [key: string]: string } = {};
+  errors: ValidationErrors = {};
 
   subSink: Subscription[] = [];
 
-  constructor(
-    private settingsService: SettingsService,
-    private notificationService: NotificationService
-  ) {
+  constructor(private settingsService: SettingsService) {
     this.getSettings();
   }
 
@@ -89,7 +86,7 @@ export class SettingsComponent implements OnDestroy {
     await this.settingsService.saveSettings(this.settings);
   };
 
-  ngOnDestroy = (): void => {
+  ngOnDestroy(): void {
     this.subSink.forEach((sub) => sub.unsubscribe());
-  };
+  }
 }

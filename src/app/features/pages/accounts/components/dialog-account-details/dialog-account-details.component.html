@@ -1,0 +1,81 @@
+<p-dialog
+  *ngIf="account"
+  class="new-account-dialog"
+  [style]="{ width: '25rem' }"
+  [header]="
+    (account.id ? 'ACCOUNTS.UPDATE_HEADER' : 'ACCOUNTS.CREATE_HEADER')
+      | translate
+  "
+  [modal]="true"
+  [visible]="visible"
+  (visibleChange)="visibleChange.emit($event)">
+  <div class="new-account-dialog-wrapper">
+    <div class="two-column-wrapper">
+      <app-label-wrapper
+        [label]="'ACCOUNTS.PROPERTY_NAME' | translate"
+        [required]="true"
+        [error]="errors['name']">
+        <input pInputText [(ngModel)]="account.name" />
+      </app-label-wrapper>
+      <p-colorPicker class="big-color-picker" [(ngModel)]="account.color" />
+    </div>
+    <app-label-wrapper
+      [label]="'ACCOUNTS.PROPERTY_TYPE' | translate"
+      [error]="errors['type']">
+      <p-dropdown
+        [style]="{ width: '100%' }"
+        [options]="accountTypes"
+        [(ngModel)]="account.type"
+        [placeholder]="'Select an account Type'">
+        <ng-template pTemplate="selectedItem">
+          <i [class]="account.type.icon"></i> {{ account.type.name }}
+        </ng-template>
+        <ng-template let-type pTemplate="item">
+          <i [class]="type.icon"></i> {{ type.name }}
+        </ng-template>
+      </p-dropdown>
+    </app-label-wrapper>
+    <app-label-wrapper
+      [label]="'ACCOUNTS.PROPERTY_BALANCE' | translate"
+      [required]="true"
+      [error]="errors['balance']">
+      <p-inputNumber
+        [style]="{ width: '100%' }"
+        [(ngModel)]="account.balance"
+        mode="decimal"
+        [minFractionDigits]="2"
+        [maxFractionDigits]="2" />
+    </app-label-wrapper>
+    <app-label-wrapper
+      [label]="'ACCOUNTS.PROPERTY_CURRENCY' | translate"
+      [required]="true"
+      [error]="errors['currency']">
+      <app-dropdown-currency
+        [disabled]="account.id"
+        [(value)]="account.currency"
+        placeholder="Currency"></app-dropdown-currency>
+    </app-label-wrapper>
+    <app-label-wrapper
+      [label]="'ACCOUNTS.PROPERTY_SHOW_IN_STATS' | translate"
+      [error]="errors['showInStats']">
+      <p-selectButton
+        [options]="yesNoOptions"
+        [(ngModel)]="account.showInStats"
+        optionValue="value">
+        <ng-template let-option pTemplate>
+          <span class="p-button-label">{{ option.label | translate }}</span>
+        </ng-template>
+      </p-selectButton>
+    </app-label-wrapper>
+    <div class="actions-wrapper">
+      <p-button
+        [label]="'ACCOUNTS.CANCEL' | translate"
+        severity="secondary"
+        (onClick)="visibleChange.emit(false)" />
+      <p-button
+        [label]="'ACCOUNTS.SAVE' | translate"
+        [loading]="isSaveLoading"
+        (onClick)="onSave()" />
+    </div>
+  </div>
+</p-dialog>

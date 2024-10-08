@@ -1,1 +1,77 @@
-<p>Accounts works!</p>
+<div class="accounts-container">
+  <div class="actions-wrapper">
+    <p-button icon="pi pi-plus" (onClick)="onNewClick()" />
+  </div>
+  <div class="accounts-table-wrapper">
+    <p-table
+      #accountsTable
+      class="accounts-table"
+      [scrollable]="true"
+      scrollHeight="flex"
+      [value]="accounts">
+      <ng-template pTemplate="header">
+        <tr>
+          <th style="width: 30%">
+            {{ 'ACCOUNTS.PROPERTY_NAME' | translate }}
+          </th>
+          <th style="width: 20%">
+            {{ 'ACCOUNTS.PROPERTY_TYPE' | translate }}
+          </th>
+          <th class="align-right">
+            {{ 'ACCOUNTS.PROPERTY_BALANCE' | translate }}
+          </th>
+          <th>{{ 'ACCOUNTS.PROPERTY_CURRENCY' | translate }}</th>
+          <th class="align-center">
+            {{ 'ACCOUNTS.PROPERTY_SHOW_IN_STATS' | translate }}
+          </th>
+          <th class="align-center">
+            {{ 'ACCOUNTS.PROPERTY_ACTIONS' | translate }}
+          </th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-account>
+        <tr>
+          <td>
+            <div class="cell-flex-wrapper">
+              <div
+                class="p-inputtext p-colorpicker-preview"
+                [ngStyle]="{ 'background-color': account.color }"></div>
+              <span>{{ account.name }}</span>
+            </div>
+          </td>
+          <td><i [class]="account.type.icon"></i> {{ account.type.name }}</td>
+          <td class="align-right">{{ account.balance | number }}</td>
+          <td>{{ account.currency.short }}</td>
+          <td class="align-center">
+            {{
+              (account.showInStats
+                ? 'ACCOUNTS.SHOW_IN_STATS_YES'
+                : 'ACCOUNTS.SHOW_IN_STATS_NO'
+              ) | translate
+            }}
+          </td>
+          <td>
+            <div class="cell-flex-wrapper">
+              <button
+                pButton
+                type="button"
+                icon="pi pi-pencil"
+                (click)="editAccount(account)"
+                class="p-button-rounded p-button-text"></button>
+              <button
+                pButton
+                type="button"
+                icon="pi pi-trash"
+                (click)="deleteAccount(account)"
+                class="p-button-rounded p-button-text p-button-danger"></button>
+            </div>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>
+
+<app-dialog-account-details
+  [account]="editingAccount"
+  [(visible)]="isNewAccountDialogVisible"></app-dialog-account-details>
