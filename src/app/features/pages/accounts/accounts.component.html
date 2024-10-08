@@ -42,7 +42,14 @@
           <td><i [class]="account.type.icon"></i> {{ account.type.name }}</td>
           <td class="align-right">{{ account.balance | number }}</td>
           <td>{{ account.currency.short }}</td>
-          <td class="align-center">{{ account.showInStats ? 'Yes' : 'No' }}</td>
+          <td class="align-center">
+            {{
+              (account.showInStats
+                ? 'ACCOUNTS.SHOW_IN_STATS_YES'
+                : 'ACCOUNTS.SHOW_IN_STATS_NO'
+              ) | translate
+            }}
+          </td>
           <td>
             <div class="cell-flex-wrapper">
               <button

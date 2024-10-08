@@ -12,7 +12,12 @@
       align-items: center;
       gap: 8px;
 
+      & > * {
+        flex-grow: 1;
+      }
+
       .big-color-picker {
+        flex-grow: 0;
         align-self: flex-start;
         margin-top: calc(var(--font-size) + 0.75rem);
 

@@ -1,6 +1,7 @@
 <p-dialog
-  class="new-account-dialog"
   *ngIf="account"
+  class="new-account-dialog"
+  [style]="{ width: '25rem' }"
   [header]="
     (account.id ? 'ACCOUNTS.UPDATE_HEADER' : 'ACCOUNTS.CREATE_HEADER')
       | translate
