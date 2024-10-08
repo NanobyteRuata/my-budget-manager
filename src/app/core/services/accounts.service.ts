@@ -65,13 +65,16 @@ export class AccountsService implements OnDestroy {
 
       this._accounts.next([account, ...this._accounts.value]);
       this.notificationService.success(
-        'Success!',
-        'Account created successfully'
+        'ACCOUNTS.SUCCESSFUL_TITLE',
+        'ACCOUNTS.CREATE_SUCCESSFUL_MESSAGE'
       );
       return account;
     } catch (error) {
       console.error('Failed to create account:', error);
-      this.notificationService.error('Error!', 'Account creation failed');
+      this.notificationService.error(
+        'ACCOUNTS.FAILED_TITLE',
+        'ACCOUNTS.CREATE_FAILED_MESSAGE'
+      );
       return undefined;
     }
   };
@@ -88,8 +91,8 @@ export class AccountsService implements OnDestroy {
       );
 
       this.notificationService.success(
-        'Success!',
-        'Account updated successfully'
+        'ACCOUNTS.SUCCESSFUL_TITLE',
+        'ACCOUNTS.UPDATE_SUCCESSFUL_MESSAGE'
       );
 
       const updatedAccounts = this._accounts.value.map((account) =>
@@ -99,7 +102,10 @@ export class AccountsService implements OnDestroy {
 
       return updatedAccount;
     } catch (error) {
-      this.notificationService.error('Error!', 'Account update failed');
+      this.notificationService.error(
+        'ACCOUNTS.FAILED_TITLE',
+        'ACCOUNTS.UPDATE_FAILED_MESSAGE'
+      );
       return undefined;
     }
   };
@@ -109,8 +115,8 @@ export class AccountsService implements OnDestroy {
       await deleteDoc(doc(this.firestore, 'accounts', id));
 
       this.notificationService.success(
-        'Success!',
-        'Account deleted successfully'
+        'ACCOUNTS.SUCCESSFUL_TITLE',
+        'ACCOUNTS.DELETE_SUCCESSFUL_MESSAGE'
       );
 
       const updatedAccounts = this._accounts.value.filter(
@@ -120,7 +126,10 @@ export class AccountsService implements OnDestroy {
 
       return true;
     } catch (error) {
-      this.notificationService.error('Error!', 'Account deletion failed');
+      this.notificationService.error(
+        'ACCOUNTS.FAILED_TITLE',
+        'ACCOUNTS.DELETE_FAILED_MESSAGE'
+      );
       return false;
     }
   };

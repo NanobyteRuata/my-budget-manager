@@ -28,11 +28,11 @@ export class DialogAccountDetailsComponent implements OnChanges, OnDestroy {
   accountTypes = ACCOUNT_TYPES;
   yesNoOptions = [
     {
-      label: 'Yes',
+      label: 'ACCOUNTS.SHOW_IN_STATS_YES',
       value: true,
     },
     {
-      label: 'No',
+      label: 'ACCOUNTS.SHOW_IN_STATS_NO',
       value: false,
     },
   ];

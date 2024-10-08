@@ -5,6 +5,8 @@ import { AccountsService } from '../../../core/services/accounts.service';
 import { Table } from 'primeng/table';
 import { ACCOUNT_TYPES } from '../../../core/constants/accounts.constant';
 import { ConfirmationService } from 'primeng/api';
+import { TranslateService } from '@ngx-translate/core';
+import { ConfirmDialogService } from '../../../core/services/confirm-dialog.service';
 
 @Component({
   selector: 'app-accounts',
@@ -23,8 +25,8 @@ export class AccountsComponent implements OnInit, OnDestroy {
   subSink: Subscription[] = [];
 
   constructor(
-    private confirmationService: ConfirmationService,
-    public accountsService: AccountsService
+    public accountsService: AccountsService,
+    private confirmDialogService: ConfirmDialogService
   ) {
     this.subscribeAccounts();
   }
@@ -52,18 +54,15 @@ export class AccountsComponent implements OnInit, OnDestroy {
   };
 
   deleteAccount = async (account: Account): Promise<void> => {
-    this.confirmationService.confirm({
-      message: 'Are you sure you want to delete this account?',
-      header: 'Delete',
-      icon: 'pi pi-trash',
-      acceptButtonStyleClass: 'p-button-danger p-button-text',
-      rejectButtonStyleClass: 'p-button-text',
-      acceptIcon: 'none',
-      rejectIcon: 'none',
-      acceptLabel: 'Yes',
-      rejectLabel: 'No',
-      accept: () => this.onDeleteConfirmed(account),
-    });
+    const isConfirmed = await this.confirmDialogService.danger(
+      'ACCOUNTS.DELETE_CONFIRM_TITLE',
+      'ACCOUNTS.DELETE_CONFIRM_MESSAGE',
+      'pi pi-trash'
+    );
+
+    if (!isConfirmed) return;
+
+    this.onDeleteConfirmed(account);
   };
 
   onDeleteConfirmed = (account: Account): void => {

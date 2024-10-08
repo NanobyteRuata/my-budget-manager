@@ -7,9 +7,6 @@
   .label {
     display: block;
     margin: 0 4px;
-    height: calc(
-      var(--font-size) + 2px
-    ); //to preserve space when label is empty string
   }
 
   .required {

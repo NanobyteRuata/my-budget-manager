@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { MessageService } from 'primeng/api';
+import { Subscription } from 'rxjs';
 
 type MessageSeverity =
   | 'success'
@@ -11,7 +12,9 @@ type MessageSeverity =
   | 'secondary';
 
 @Injectable()
-export class NotificationService {
+export class NotificationService implements OnDestroy {
+  translationSubscription?: Subscription;
+
   constructor(
     private translateService: TranslateService,
     private messageService: MessageService
@@ -24,15 +27,17 @@ export class NotificationService {
     variables?: { [key: string]: string }
   ): void => {
     const toTranslate = [title, description];
-    this.translateService.get(toTranslate, variables).subscribe({
-      next: (translatedValues) => {
-        this.messageService.add({
-          severity,
-          summary: translatedValues[title],
-          detail: translatedValues[description],
-        });
-      },
-    });
+    this.translationSubscription = this.translateService
+      .get(toTranslate, variables)
+      .subscribe({
+        next: (translatedValues) => {
+          this.messageService.add({
+            severity,
+            summary: translatedValues[title],
+            detail: translatedValues[description],
+          });
+        },
+      });
   };
 
   notify = (
@@ -75,4 +80,8 @@ export class NotificationService {
   ): void => {
     this.notify('info', title, description, variables);
   };
+
+  ngOnDestroy(): void {
+    this.translationSubscription?.unsubscribe();
+  }
 }

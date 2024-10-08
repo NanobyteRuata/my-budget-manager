@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { Auth, User } from '@angular/fire/auth';
 import { Router } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
-import { ConfirmationService, MenuItem } from 'primeng/api';
+import { MenuItem } from 'primeng/api';
 import { ThemeService } from '../../../core/services/theme.service';
+import { ConfirmDialogService } from '../../../core/services/confirm-dialog.service';
 
 @Component({
   selector: 'app-layout',
@@ -25,8 +25,7 @@ export class LayoutComponent {
   constructor(
     private auth: Auth,
     private router: Router,
-    private confirmationService: ConfirmationService,
-    private translateService: TranslateService,
+    private confirmDialogService: ConfirmDialogService,
     public themeService: ThemeService
   ) {
     this.getCurrentUser();
@@ -44,31 +43,17 @@ export class LayoutComponent {
     });
   };
 
-  onLogoutClick = (): void => {
-    const toTranslate = [
+  onLogoutClick = async (): Promise<void> => {
+    const isConfirmed = await this.confirmDialogService.danger(
       'FEATURES.SIGN_OUT',
       'FEATURES.SIGN_OUT_CONFIRM_MESSAGE',
-      'COMMON.YES',
-      'COMMON.NO',
-    ];
-    this.translateService.get(toTranslate).subscribe({
-      next: (translatedValues) => {
-        this.confirmationService.confirm({
-          message: translatedValues['FEATURES.SIGN_OUT_CONFIRM_MESSAGE'],
-          header: translatedValues['FEATURES.SIGN_OUT'],
-          icon: 'pi pi-sign-out',
-          acceptButtonStyleClass: 'p-button-danger p-button-text',
-          rejectButtonStyleClass: 'p-button-text',
-          acceptIcon: 'none',
-          rejectIcon: 'none',
-          acceptLabel: translatedValues['COMMON.YES'],
-          rejectLabel: translatedValues['COMMON.NO'],
-          accept: () => {
-            this.auth.signOut().then(() => this.redirectToLogin());
-          },
-        });
-      },
-    });
+      'pi pi-sign-out'
+    );
+
+    if (!isConfirmed) return;
+
+    await this.auth.signOut();
+    this.redirectToLogin();
   };
 
   redirectToLogin = (): void => {

@@ -14,6 +14,7 @@ import {
 import { NotificationService } from './services/notification.service';
 import { SettingsService } from './services/settings.service';
 import { AccountsService } from './services/accounts.service';
+import { ConfirmDialogService } from './services/confirm-dialog.service';
 
 @NgModule({
   providers: [
@@ -29,6 +30,7 @@ import { AccountsService } from './services/accounts.service';
     NotificationService,
     SettingsService,
     AccountsService,
+    ConfirmDialogService,
   ],
 })
 export class CoreModule {}

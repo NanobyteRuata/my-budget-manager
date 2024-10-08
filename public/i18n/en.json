@@ -21,7 +21,29 @@
     "TITLE": "Dashboard"
   },
   "ACCOUNTS": {
-    "TITLE": "Accounts"
+    "TITLE": "Accounts",
+    "PROPERTY_NAME": "Name",
+    "PROPERTY_TYPE": "Type",
+    "PROPERTY_BALANCE": "Balance",
+    "PROPERTY_CURRENCY": "Currency",
+    "PROPERTY_SHOW_IN_STATS": "Show in stats?",
+    "PROPERTY_ACTIONS": "Actions",
+    "CREATE_HEADER": "Create an account",
+    "UPDATE_HEADER": "Update an account",
+    "SHOW_IN_STATS_YES": "Yes",
+    "SHOW_IN_STATS_NO": "No",
+    "CANCEL": "Cancel",
+    "SAVE": "Save",
+    "SUCCESSFUL_TITLE": "Success",
+    "FAILED_TITLE": "Unsuccess",
+    "CREATE_SUCCESSFUL_MESSAGE": "Account successfully created",
+    "CREATE_FAILED_MESSAGE": "Problem creating account",
+    "UPDATE_SUCCESSFUL_MESSAGE": "Account successfully updated",
+    "UPDATE_FAILED_MESSAGE": "Problem updating account",
+    "DELETE_CONFIRM_TITLE": "Delete",
+    "DELETE_CONFIRM_MESSAGE": "Are you sure you want to delete?",
+    "DELETE_SUCCESSFUL_MESSAGE": "Account successfully deleted",
+    "DELETE_FAILED_MESSAGE": "Problem deleting account"
   },
   "SETTINGS": {
     "TITLE": "Settings",

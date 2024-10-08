@@ -1,6 +1,6 @@
 <div class="accounts-container">
   <div class="actions-wrapper">
-    <p-button (onClick)="onNewClick()">New</p-button>
+    <p-button icon="pi pi-plus" (onClick)="onNewClick()" />
   </div>
   <div class="accounts-table-wrapper">
     <p-table
@@ -11,12 +11,22 @@
       [value]="accounts">
       <ng-template pTemplate="header">
         <tr>
-          <th style="width: 30%">Name</th>
-          <th style="width: 20%">Type</th>
-          <th class="align-right">Balance</th>
-          <th>Currency</th>
-          <th class="align-center">Show in stats?</th>
-          <th></th>
+          <th style="width: 30%">
+            {{ 'ACCOUNTS.PROPERTY_NAME' | translate }}
+          </th>
+          <th style="width: 20%">
+            {{ 'ACCOUNTS.PROPERTY_TYPE' | translate }}
+          </th>
+          <th class="align-right">
+            {{ 'ACCOUNTS.PROPERTY_BALANCE' | translate }}
+          </th>
+          <th>{{ 'ACCOUNTS.PROPERTY_CURRENCY' | translate }}</th>
+          <th class="align-center">
+            {{ 'ACCOUNTS.PROPERTY_SHOW_IN_STATS' | translate }}
+          </th>
+          <th class="align-center">
+            {{ 'ACCOUNTS.PROPERTY_ACTIONS' | translate }}
+          </th>
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-account>

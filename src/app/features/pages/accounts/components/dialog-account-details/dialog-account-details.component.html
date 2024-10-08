@@ -1,21 +1,26 @@
 <p-dialog
   class="new-account-dialog"
   *ngIf="account"
-  [header]="(account.id ? 'Update' : 'Create') + ' an Account'"
+  [header]="
+    (account.id ? 'ACCOUNTS.UPDATE_HEADER' : 'ACCOUNTS.CREATE_HEADER')
+      | translate
+  "
   [modal]="true"
   [visible]="visible"
   (visibleChange)="visibleChange.emit($event)">
   <div class="new-account-dialog-wrapper">
     <div class="two-column-wrapper">
       <app-label-wrapper
-        label="Name"
+        [label]="'ACCOUNTS.PROPERTY_NAME' | translate"
         [required]="true"
         [error]="errors['name']">
         <input pInputText [(ngModel)]="account.name" />
       </app-label-wrapper>
       <p-colorPicker class="big-color-picker" [(ngModel)]="account.color" />
     </div>
-    <app-label-wrapper label="Type" [error]="errors['type']">
+    <app-label-wrapper
+      [label]="'ACCOUNTS.PROPERTY_TYPE' | translate"
+      [error]="errors['type']">
       <p-dropdown
         [style]="{ width: '100%' }"
         [options]="accountTypes"
@@ -30,7 +35,7 @@
       </p-dropdown>
     </app-label-wrapper>
     <app-label-wrapper
-      label="Balance"
+      [label]="'ACCOUNTS.PROPERTY_BALANCE' | translate"
       [required]="true"
       [error]="errors['balance']">
       <p-inputNumber
@@ -41,7 +46,7 @@
         [maxFractionDigits]="2" />
     </app-label-wrapper>
     <app-label-wrapper
-      [label]="'Currency'"
+      [label]="'ACCOUNTS.PROPERTY_CURRENCY' | translate"
       [required]="true"
       [error]="errors['currency']">
       <app-dropdown-currency
@@ -49,19 +54,27 @@
         [(value)]="account.currency"
         placeholder="Currency"></app-dropdown-currency>
     </app-label-wrapper>
-    <app-label-wrapper label="Show in stats?" [error]="errors['showInStats']">
+    <app-label-wrapper
+      [label]="'ACCOUNTS.PROPERTY_SHOW_IN_STATS' | translate"
+      [error]="errors['showInStats']">
       <p-selectButton
         [options]="yesNoOptions"
         [(ngModel)]="account.showInStats"
-        optionLabel="label"
-        optionValue="value" />
+        optionValue="value">
+        <ng-template let-option pTemplate>
+          <span class="p-button-label">{{ option.label | translate }}</span>
+        </ng-template>
+      </p-selectButton>
     </app-label-wrapper>
     <div class="actions-wrapper">
       <p-button
-        label="Cancel"
+        [label]="'ACCOUNTS.CANCEL' | translate"
         severity="secondary"
         (onClick)="visibleChange.emit(false)" />
-      <p-button label="Save" [loading]="isSaveLoading" (onClick)="onSave()" />
+      <p-button
+        [label]="'ACCOUNTS.SAVE' | translate"
+        [loading]="isSaveLoading"
+        (onClick)="onSave()" />
     </div>
   </div>
 </p-dialog>
