@@ -7,6 +7,6 @@ import { Component, Input } from '@angular/core';
 })
 export class LabelWrapperComponent {
   @Input({ required: true }) label!: string;
-  @Input({ required: false }) required: boolean = false;
+  @Input({ required: false }) required = false;
   @Input({ required: false }) error?: string;
 }

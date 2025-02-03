@@ -59,7 +59,7 @@ export class ConfirmDialogService implements OnDestroy {
   success = async (
     title: string,
     message: string,
-    icon: string = 'pi pi-check',
+    icon = 'pi pi-check',
     yes?: string,
     no?: string
   ): Promise<boolean> => this.confirm('success', title, message, icon, yes, no);
@@ -67,7 +67,7 @@ export class ConfirmDialogService implements OnDestroy {
   info = async (
     title: string,
     message: string,
-    icon: string = 'pi pi-info-circle',
+    icon = 'pi pi-info-circle',
     yes?: string,
     no?: string
   ): Promise<boolean> => this.confirm('info', title, message, icon, yes, no);
@@ -75,7 +75,7 @@ export class ConfirmDialogService implements OnDestroy {
   danger = async (
     title: string,
     message: string,
-    icon: string = 'pi pi-exclamation-triangle',
+    icon = 'pi pi-exclamation-triangle',
     yes?: string,
     no?: string
   ): Promise<boolean> => this.confirm('danger', title, message, icon, yes, no);

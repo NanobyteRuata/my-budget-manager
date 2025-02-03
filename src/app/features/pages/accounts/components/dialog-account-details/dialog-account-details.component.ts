@@ -22,7 +22,7 @@ import { AccountsService } from '../../../../../core/services/accounts.service';
 })
 export class DialogAccountDetailsComponent implements OnChanges, OnDestroy {
   @Input() account?: Account;
-  @Input() visible: boolean = false;
+  @Input() visible = false;
   @Output() visibleChange = new EventEmitter<boolean>();
 
   accountTypes = ACCOUNT_TYPES;
@@ -38,9 +38,9 @@ export class DialogAccountDetailsComponent implements OnChanges, OnDestroy {
   ];
 
   settings?: Settings;
-  errors: { [key: string]: string } = {};
+  errors: Record<string, string> = {};
 
-  isSaveLoading: boolean = false;
+  isSaveLoading = false;
 
   subSink: Subscription[] = [];
 

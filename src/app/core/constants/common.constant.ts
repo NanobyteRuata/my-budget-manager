@@ -1,1 +1,1 @@
-export const DEFAULT_COLOR: string = '#2dd4bf';
+export const DEFAULT_COLOR = '#2dd4bf';
