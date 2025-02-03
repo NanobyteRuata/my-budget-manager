@@ -20,7 +20,7 @@ export class AccountsComponent implements OnInit, OnDestroy {
   accounts: Account[] = [];
 
   editingAccount?: Account;
-  isNewAccountDialogVisible: boolean = false;
+  isNewAccountDialogVisible = false;
 
   subSink: Subscription[] = [];
 

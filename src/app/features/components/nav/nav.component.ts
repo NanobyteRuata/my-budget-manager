@@ -11,7 +11,7 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrl: './nav.component.scss',
 })
 export class NavComponent implements OnDestroy {
-  isSidebarOpen: boolean = false;
+  isSidebarOpen = false;
   navItems: MenuItem[] = [];
   selectedNavItem?: MenuItem;
 
@@ -33,9 +33,9 @@ export class NavComponent implements OnDestroy {
   };
 
   getNavItemsAndTranslate = async (): Promise<void> => {
-    let navItems: MenuItem[] = [];
+    const navItems: MenuItem[] = [];
 
-    for (let navItem of NAV_ITEMS) {
+    for (const navItem of NAV_ITEMS) {
       navItems.push({
         ...navItem,
         label: await this.getTranslation(navItem.label),

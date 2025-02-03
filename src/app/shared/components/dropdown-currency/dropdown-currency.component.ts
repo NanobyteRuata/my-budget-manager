@@ -10,7 +10,7 @@ import { AutoCompleteCompleteEvent } from 'primeng/autocomplete';
 })
 export class DropdownCurrencyComponent {
   @Input({ required: true }) value!: Currency;
-  @Input() placeholder: string = '';
+  @Input() placeholder = '';
   @Input() disabled: any;
 
   @Output() valueChange = new EventEmitter<Currency>();

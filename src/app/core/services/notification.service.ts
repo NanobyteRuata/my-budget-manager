@@ -24,7 +24,7 @@ export class NotificationService implements OnDestroy {
     title: string,
     description: string,
     severity: MessageSeverity,
-    variables?: { [key: string]: string }
+    variables?: Record<string, string>
   ): void => {
     const toTranslate = [title, description];
     this.translationSubscription = this.translateService
@@ -44,7 +44,7 @@ export class NotificationService implements OnDestroy {
     severity: MessageSeverity,
     title: string,
     description: string,
-    variables?: { [key: string]: string }
+    variables?: Record<string, string>
   ): void => {
     this.showNotification(title, description, severity, variables);
   };
@@ -52,7 +52,7 @@ export class NotificationService implements OnDestroy {
   error = (
     title: string,
     description: string,
-    variables?: { [key: string]: string }
+    variables?: Record<string, string>
   ): void => {
     this.notify('error', title, description, variables);
   };
@@ -60,7 +60,7 @@ export class NotificationService implements OnDestroy {
   success = (
     title: string,
     description: string,
-    variables?: { [key: string]: string }
+    variables?: Record<string, string>
   ): void => {
     this.notify('success', title, description, variables);
   };
@@ -68,7 +68,7 @@ export class NotificationService implements OnDestroy {
   warning = (
     title: string,
     description: string,
-    variables?: { [key: string]: string }
+    variables?: Record<string, string>
   ): void => {
     this.notify('warn', title, description, variables);
   };
@@ -76,7 +76,7 @@ export class NotificationService implements OnDestroy {
   info = (
     title: string,
     description: string,
-    variables?: { [key: string]: string }
+    variables?: Record<string, string>
   ): void => {
     this.notify('info', title, description, variables);
   };
